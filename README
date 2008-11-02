@@ -1,0 +1,48 @@
+App-ZofCMS-Plugin-Base
+
+The module is a base class for L<App::ZofCMS> plugins. I'll safely assume that you've
+already read the docs for L<App::ZofCMS>,
+L<App::ZofCMS::Config> and L<App::ZofCMS::Template>
+
+The base class (currently) is only for plugins who take their "config" as a single
+first-level key in either Main Config File or ZofCMS Template. That key's value
+must be a hashref.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Build.PL
+	./Build
+	./Build test
+	./Build install
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the
+perldoc command.
+
+    perldoc App::ZofCMS::Plugin::Base
+
+You can also look for information at:
+
+    RT, CPAN's request tracker
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=App-ZofCMS-Plugin-Base
+
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/App-ZofCMS-Plugin-Base
+
+    CPAN Ratings
+        http://cpanratings.perl.org/d/App-ZofCMS-Plugin-Base
+
+    Search CPAN
+        http://search.cpan.org/dist/App-ZofCMS-Plugin-Base
+
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2008 'Zoffix
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
