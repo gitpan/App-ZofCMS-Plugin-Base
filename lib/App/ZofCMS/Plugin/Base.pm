@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Base;
 use warnings;
 use strict;
 
-our $VERSION = '0.0102';
+our $VERSION = '0.0103';
 
 sub new { bless {}, shift }
 
@@ -14,6 +14,12 @@ sub process {
     return
         unless $template->{$key}
             or $config->conf->{$key};
+
+    $template->{$key} = $template->{$key}->( $template, $query, $config )
+        if ref $template->{$key} eq 'CODE';
+
+    $config->conf->{$key} = $config->conf->{$key}->( $template, $query, $config )
+        if ref $config->conf->{$key} eq 'CODE';
 
     my %conf = (
         $self->_defaults,
@@ -66,7 +72,10 @@ must be a hashref.
 
 The C<_key> needs to return a scalar contain the name of first level key in ZofCMS template
 or Main Config file. Study the source code of this module to find out what it's used for
-if it's still unclear.
+if it's still unclear. The value of that key can be either a hashref or a subref that returns
+a hashref or undef. If the value is a subref, its return value will be assigned to the key
+and its C<@_> will contain (in that order): C<$t, $q, $conf> where C<$t> is ZofCMS Template
+hashref, C<$q> is hashref of query parameters and C<$conf> is L<App::ZofCMS::Config> object.
 
 =head2 C<_defaults>
 

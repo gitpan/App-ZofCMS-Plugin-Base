@@ -1,5 +1,8 @@
 Revision history for App-ZofCMS-Plugin-Base
 
+0.0103  March 6, 2008
+        Added an option to execute a sub on plugin config instead of only accepting a hashref
+
 0.0102  November 3, 2008
         Re-upload due to indexing issues; no code changes
 
