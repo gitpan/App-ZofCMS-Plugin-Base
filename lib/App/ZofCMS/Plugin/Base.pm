@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Base;
 use warnings;
 use strict;
 
-our $VERSION = '0.0103';
+our $VERSION = '0.0104';
 
 sub new { bless {}, shift }
 
@@ -49,9 +49,11 @@ App::ZofCMS::Plugin::Base - base class for App::ZofCMS plugins
     use base 'App::ZofCMS::Plugin::Base';
 
     sub _key { 'plug_example' }
-    sub _defaults { qw/foo bar baz beer/ }
+    sub _defaults {
+        qw/foo bar baz beer/
+    }
     sub _do {
-        my ( $self, $conf, $template, $query, $config ) = @_;
+        my ( $self, $conf, $t, $q, $config ) = @_;
     }
 
 =head1 DESCRIPTION
@@ -62,7 +64,7 @@ L<App::ZofCMS::Config> and L<App::ZofCMS::Template>
 
 The base class (currently) is only for plugins who take their "config" as a single
 first-level key in either Main Config File or ZofCMS Template. That key's value
-must be a hashref.
+must be a hashref or a subref that returns a hashref or C<undef>.
 
 =head1 SUBS TO OVERRIDE
 
@@ -101,6 +103,64 @@ Finally, the C<$config> is L<App::ZofCMS::Config> object.
 =head1 MOAR!
 
 Feel free to email me the requests for extra functionality for this base class.
+
+=head1 DOCUMENTATION FOR PLUGINS
+
+Below is a "template" documentation. If you're going to use it, make sure to read
+through the entire thing as some things may not apply to your plugin; I've added those
+bits as they are very common in the plugins that I write, some of them (but not all)
+I marked with word C<[EDIT]>
+
+    =head1 DESCRIPTION
+
+    The module is a plugin for L<App::ZofCMS> that provides means to [EDIT].
+
+    This documentation assumes you've read L<App::ZofCMS>, L<App::ZofCMS::Config> and L<App::ZofCMS::Template>
+
+    =head1 FIRST-LEVEL ZofCMS TEMPLATE AND MAIN CONFIG FILE KEYS
+
+    =head2 C<plugins>
+
+        plugins => [
+            { [EDIT] => 2000 },
+        ],
+
+    B<Mandatory>. You need to include the plugin in the list of plugins to execute.
+
+    =head2 C<[EDIT]>
+
+        [EDIT] => {
+        },
+
+        # or
+        [EDIT] => sub {
+            my ( $t, $q, $config ) = @_;
+        },
+
+    B<Mandatory>. Takes either a hashref or a subref as a value. If subref is specified,
+    its return value will be assigned to C<[EDIT]> as if it was already there. If sub returns
+    an C<undef>, then plugin will stop further processing. The C<@_> of the subref will
+    contain (in that order): ZofCMS Tempalate hashref, query parameters hashref and
+    L<App::ZofCMS::Config> object. [EDIT]. Possible keys/values for the hashref
+    are as follows:
+
+    =head3 C<cell>
+
+        [EDIT] => {
+            cell => 't',
+        },
+
+    B<Optional>. Specifies ZofCMS Template first-level key where to [EDIT]. Must be
+    pointing to either a hashref or an C<undef> (see C<key> below). B<Defaults to:> C<t>
+
+    =head3 C<key>
+
+        [EDIT] => {
+            key => '[EDIT]',
+        },
+
+    B<Optional>. Specifies ZofCMS Template second-level key where to [EDIT]. This key will
+    be inside C<cell> (see above)>. B<Defaults to:> C<[EDIT]>
 
 =head1 AUTHOR
 
