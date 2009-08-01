@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Base;
 use warnings;
 use strict;
 
-our $VERSION = '0.0104';
+our $VERSION = '0.0105';
 
 sub new { bless {}, shift }
 
