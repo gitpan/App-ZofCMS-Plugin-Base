@@ -1,5 +1,8 @@
 Revision history for App-ZofCMS-Plugin-Base
 
+0.0106  December 16, 2010
+	Fixed a bug where using a subref for main plugin config was done AFTER config processing (so subs were rather useless)
+
 0.0105  August 1, 2009
         Had to reupload due to PAUSE breaking on me
 

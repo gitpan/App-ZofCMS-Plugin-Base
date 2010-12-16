@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Base;
 use warnings;
 use strict;
 
-our $VERSION = '0.0105';
+our $VERSION = '0.0106';
 
 sub new { bless {}, shift }
 
@@ -11,15 +11,16 @@ sub process {
     my ( $self, $template, $query, $config ) = @_;
 
     my $key = $self->_key;
-    return
-        unless $template->{$key}
-            or $config->conf->{$key};
 
     $template->{$key} = $template->{$key}->( $template, $query, $config )
         if ref $template->{$key} eq 'CODE';
 
     $config->conf->{$key} = $config->conf->{$key}->( $template, $query, $config )
         if ref $config->conf->{$key} eq 'CODE';
+
+    return
+        unless $template->{$key}
+            or $config->conf->{$key};
 
     my %conf = (
         $self->_defaults,
