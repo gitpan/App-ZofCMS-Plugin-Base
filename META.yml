@@ -15,9 +15,9 @@ name: App-ZofCMS-Plugin-Base
 provides:
   App::ZofCMS::Plugin::Base:
     file: lib/App/ZofCMS/Plugin/Base.pm
-    version: 0.0106
+    version: 0.0110
 requires:
   App::ZofCMS: 0.0106
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.0106
+version: 0.0110

@@ -2,14 +2,14 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-          'NAME' => 'App::ZofCMS::Plugin::Base',
-          'VERSION_FROM' => 'lib/App/ZofCMS/Plugin/Base.pm',
-          'PREREQ_PM' => {
-                           'App::ZofCMS' => '0.0106',
-                           'Test::More' => 0
-                         },
-          'INSTALLDIRS' => 'site',
-          'EXE_FILES' => [],
-          'PL_FILES' => {}
-        )
+  'NAME' => 'App::ZofCMS::Plugin::Base',
+  'VERSION_FROM' => 'lib/App/ZofCMS/Plugin/Base.pm',
+  'PREREQ_PM' => {
+                   'App::ZofCMS' => '0.0106',
+                   'Test::More' => 0
+                 },
+  'INSTALLDIRS' => 'site',
+  'EXE_FILES' => [],
+  'PL_FILES' => {}
+)
 ;
