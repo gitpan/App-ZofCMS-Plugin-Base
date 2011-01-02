@@ -1,6 +1,10 @@
 Revision history for App-ZofCMS-Plugin-Base
 
-0.0107  January 1, 2011
+0.0111  January 1, 2011
+        Fixed stupid extraneous bracket in provided
+        plugin documentation.
+
+0.0110  January 1, 2011
         Edited provided plugin documentation.
         Added _has_value and _dbh utility subs.
 

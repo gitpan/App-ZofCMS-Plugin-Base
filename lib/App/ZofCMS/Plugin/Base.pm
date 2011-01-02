@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Base;
 use warnings;
 use strict;
 
-our $VERSION = '0.0110';
+our $VERSION = '0.0111';
 
 sub new { bless {}, shift }
 
@@ -200,7 +200,6 @@ word C<[EDIT]>.
     =head2 C<plugins>
 
         plugins => [ qw/[EDIT]/ ],
-        ],
 
     B<Mandatory>. You need to include the plugin in the list of
     plugins to execute.
