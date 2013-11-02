@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::Base;
 use warnings;
 use strict;
 
-our $VERSION = '0.0111';
+our $VERSION = '0.0112';
 
 sub new { bless {}, shift }
 
@@ -57,6 +57,8 @@ sub _dbh {
 
 1;
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
